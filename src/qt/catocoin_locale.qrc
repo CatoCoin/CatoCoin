@@ -1,0 +1,30 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/catocoin_bg.qm</file>
+        <file alias="ca">locale/catocoin_ca.qm</file>
+        <file alias="cs">locale/catocoin_cs.qm</file>
+        <file alias="da">locale/catocoin_da.qm</file>
+        <file alias="de">locale/catocoin_de.qm</file>
+        <file alias="en">locale/catocoin_en.qm</file>
+        <file alias="en_US">locale/catocoin_en_US.qm</file>
+        <file alias="es">locale/catocoin_es.qm</file>
+        <file alias="fi">locale/catocoin_fi.qm</file>
+        <file alias="fr_FR">locale/catocoin_fr_FR.qm</file>
+        <file alias="hr">locale/catocoin_hr.qm</file>
+        <file alias="it">locale/catocoin_it.qm</file>
+        <file alias="ja">locale/catocoin_ja.qm</file>
+        <file alias="ko_KR">locale/catocoin_ko_KR.qm</file>
+        <file alias="nl">locale/catocoin_nl.qm</file>
+        <file alias="pl">locale/catocoin_pl.qm</file>
+        <file alias="pt">locale/catocoin_pt.qm</file>
+        <file alias="pt_BR">locale/catocoin_pt_BR.qm</file>
+        <file alias="ro_RO">locale/catocoin_ro_RO.qm</file>
+        <file alias="ru">locale/catocoin_ru.qm</file>
+        <file alias="sk">locale/catocoin_sk.qm</file>
+        <file alias="sv">locale/catocoin_sv.qm</file>
+        <file alias="tr">locale/catocoin_tr.qm</file>
+        <file alias="uk">locale/catocoin_uk.qm</file>
+        <file alias="zh_CN">locale/catocoin_zh_CN.qm</file>
+        <file alias="zh_TW">locale/catocoin_zh_TW.qm</file>
+    </qresource>
+</RCC>

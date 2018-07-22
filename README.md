@@ -1,2 +1,3 @@
-# CatoCoin
-CatoCoin C++ Code Base
+Update coming soon!
+# CATOCore
+# CATOCoin
