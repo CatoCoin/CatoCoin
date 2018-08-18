@@ -1,4 +1,4 @@
-CatoCoin
+CatoCoin - Port: 33888 RPC Port: 6082
 
 Specs
   Type: Masternode/POS
