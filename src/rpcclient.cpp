@@ -127,6 +127,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"exportzerocoins", 0},
         {"exportzerocoins", 1},
         {"resetmintzerocoin", 0}
+	//{"getmasternodecollateral", 0}
     };
 
 class CRPCConvertTable

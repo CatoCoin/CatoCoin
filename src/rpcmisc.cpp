@@ -85,6 +85,9 @@ Value getinfo(const Array& params, bool fHelp)
             "  \"relayfee\": x.xxxx,         (numeric) minimum relay fee for non-free transactions in catocoin/kb\n"
             "  \"staking status\": true|false,  (boolean) if the wallet is staking or not\n"
             "  \"errors\": \"...\"           (string) any error messages\n"
+            "  \"MN collateral\": xxxx,      (numeric) current required collateral to start a new masternode\n"
+            "  \"MN reward\": xxxx,          (numeric) current Masternode reward\n"
+            "  \"Staking reward\": xxxx,       (numeric) current Proof of Stake reward\n"
             "}\n"
             "\nExamples:\n" +
             HelpExampleCli("getinfo", "") + HelpExampleRpc("getinfo", ""));
@@ -133,6 +136,57 @@ Value getinfo(const Array& params, bool fHelp)
         nStaking = true;
     obj.push_back(Pair("staking status", (nStaking ? "Staking Active" : "Staking Not Active")));
     obj.push_back(Pair("errors", GetWarnings("statusbar")));
+        obj.push_back(Pair("MN collateral", (int)GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)));
+	double blk_reward = 0;
+	int collat = GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL);
+	if (collat == 2750) {
+		blk_reward = 7.36;
+	}
+	else if (collat == 2950) {
+		blk_reward = 8.05;
+	}
+        else if (collat == 3150) {
+                blk_reward = 8.45;
+        }
+        else if (collat == 3350) {
+                blk_reward = 8.88;
+        }
+        else if (collat == 3600) {
+                blk_reward = 9.32;
+        }
+        else if (collat == 3850) {
+                blk_reward = 9.78;
+        }
+        else if (collat == 4150) {
+                blk_reward = 10.27;
+        }
+        else if (collat == 4400) {
+                blk_reward = 10.79;
+        }
+        else if (collat == 4750) {
+                blk_reward = 11.33;
+        }
+        else if (collat == 5050) {
+                blk_reward = 11.89;
+        }
+        else if (collat == 5400) {
+                blk_reward = 12.49;
+        }
+        else if (collat == 5800) {
+                blk_reward = 13.11;
+        }
+        else if (collat == 6200) {
+                blk_reward = 13.77;
+        }
+        else if (collat == 6600) {
+                blk_reward = 14.46;
+        }
+        else if (collat == 7100) {
+                blk_reward = 15.18;
+        }
+        obj.push_back(Pair("MN reward", (double)blk_reward*.7));
+        obj.push_back(Pair("Staking reward", (double)blk_reward*.3));
+
     return obj;
 }
 
