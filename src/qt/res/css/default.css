@@ -979,7 +979,7 @@ font-size:12px;
 margin-left:16px;
 }
 
-QWidget .QFrame#frame .QLabel#labelTotalText { /* Total Balance Label */
+QWidget .QFrame#frame .QLabel#labelTotalText1 { /* Total Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:160px;
 background-color:#26ade3;
@@ -1001,8 +1001,71 @@ font-weight:bold;
 font-size:14px;
 min-height:35px;
 }
+QWidget .QFrame#frame .QLabel#labelTotalText3 { /* Total Balance Label */
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
 
-QWidget .QFrame#frame .QLabel#labelTotal { /* Total Balance */
+QWidget .QFrame#frame .QLabel#labelTotalText4 { /* Total Balance Label */
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText5 { 
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+*/
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText6 { 
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+*/
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText7 {
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+
+*/
+
+QWidget .QFrame#frame .QLabel#labelTotal1 { /* Total Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 margin-left:0px;
@@ -1013,7 +1076,33 @@ qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 margin-left:0px;
 }
+QWidget .QFrame#frame .QLabel#labelTotal3 { /* Total Balance */
+qproperty-alignment: 'AlignVCenter | AlignLeft';
+font-size:12px;
+margin-left:0px;
+}
 
+QWidget .QFrame#frame .QLabel#labelTotal4 { /* Total Balance */
+qproperty-alignment: 'AlignVCenter | AlignLeft';
+font-size:12px;
+margin-left:0px;
+}
+
+QWidget .QFrame#frame .QLabel#labelTotal5 { /* Total Balance */
+qproperty-alignment: 'AlignVCenter | AlignLeft';
+font-size:12px;
+margin-left:0px;
+}
+QWidget .QFrame#frame .QLabel#labelTotal6 { /* Total Balance */
+qproperty-alignment: 'AlignVCenter | AlignLeft';
+font-size:12px;
+margin-left:0px;
+}
+QWidget .QFrame#frame .QLabel#labelTotal7 { /* Total Balance */
+qproperty-alignment: 'AlignVCenter | AlignLeft';
+font-size:12px;
+margin-left:0px;
+}
 QWidget .QFrame#frame .QLabel#labelWatchTotal { /* Watch-only Total Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;

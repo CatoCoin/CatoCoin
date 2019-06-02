@@ -13,6 +13,8 @@
 #include "masternodeman.h"
 #include "rpcserver.h"
 #include "utilmoneystr.h"
+#include "primitives/transaction.h"
+#include "masternodeman.h"
 
 #include <boost/tokenizer.hpp>
 
@@ -139,7 +141,8 @@ Value masternode(const Array& params, bool fHelp)
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "start-all" && strCommand != "start-missing" &&
             strCommand != "start-disabled" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count" && strCommand != "enforce" &&
             strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" &&
-            strCommand != "outputs" && strCommand != "status" && strCommand != "calcscore"))
+            strCommand != "outputs" && strCommand != "status" && strCommand != "calcscore" && strCommand != "tierone"&& strCommand != "tiertwo"
+&& strCommand != "tierthree"))
         throw runtime_error(
             "masternode \"command\"...\n"
             "\nSet of commands to execute masternode related actions\n"
@@ -184,6 +187,22 @@ Value masternode(const Array& params, bool fHelp)
         Array newParams(params.size() - 1);
         std::copy(params.begin() + 1, params.end(), newParams.begin());
         return masternodecurrent(newParams, fHelp);
+    }
+
+    if (strCommand == "tierone") {
+        Array newParams(params.size() - 1);
+        std::copy(params.begin() + 1, params.end(), newParams.begin());
+        return masternodetierone(newParams, fHelp);
+    }
+    if (strCommand == "tiertwo") {
+        Array newParams(params.size() - 1);
+        std::copy(params.begin() + 1, params.end(), newParams.begin());
+        return masternodetiertwo(newParams, fHelp);
+    }
+    if (strCommand == "tierthree") {
+        Array newParams(params.size() - 1);
+        std::copy(params.begin() + 1, params.end(), newParams.begin());
+        return masternodetierthree(newParams, fHelp);
     }
 
     if (strCommand == "debug") {
@@ -380,7 +399,159 @@ Value getmasternodecount (const Array& params, bool fHelp)
 
     return obj;
 }
+Value masternodetierone (const Array& params, bool fHelp)
+{
+    if (fHelp || (params.size() != 0))
+        throw runtime_error(
+            "masternodecurrent\n"
+            "\nGet current masternode winner\n"
 
+            "\nResult:\n"
+            "{\n"
+            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
+            "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
+            "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
+            "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
+            "  \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
+            "}\n"
+            "\nExamples:\n" +
+            HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Array ret;
+Object obj;
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+//std::vector<CMasternode> final_list;
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == 4400) {
+//obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
+obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
+//    std::hash<std::string> hasher;
+/*    auto hashed = hasher(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()); //returns std::size_t
+
+CBlockIndex* pindexPrev = chainActive.Tip();
+obj.push_back(Pair("Lucky hash", (uint64_t)hashed % 999999));
+auto hashlastblock = hasher(pindexPrev->GetBlockHash().ToString());
+obj.push_back(Pair("Last block hash",(uint64_t)hashlastblock % 999999));*/
+//obj.push_back(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
+ret.push_back(obj);
+//final_list.push_back(mn);
+}// inner if
+}//for loop
+}//gettransaction if
+       // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+}//fboost_foreach
+//if (arr.size() == 0) {
+//arr.push_back(Pair("nil","nil"));
+//}
+return ret;
+
+}
+
+Value masternodetiertwo (const Array& params, bool fHelp)
+{
+    if (fHelp || (params.size() != 0))
+        throw runtime_error(
+            "masternodecurrent\n"
+            "\nGet current masternode winner\n"
+
+            "\nResult:\n"
+            "{\n"
+            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
+            "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
+            "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
+            "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
+            "  \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
+            "}\n"
+            "\nExamples:\n" +
+            HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Array ret;
+Object obj;
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+//std::vector<CMasternode> final_list;
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == 4750) {
+//obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
+obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
+//obj.push_back(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
+ret.push_back(obj);
+
+//final_list.push_back(mn);
+}// inner if
+}//for loop
+}//gettransaction if
+       // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+}//fboost_foreach
+//if (obj.size() == 0) {
+//obj.push_back(Pair("nil","nil"));
+//}
+return ret;
+
+}
+Value masternodetierthree (const Array& params, bool fHelp)
+{
+    if (fHelp || (params.size() != 0))
+        throw runtime_error(
+            "masternodecurrent\n"
+            "\nGet current masternode winner\n"
+
+            "\nResult:\n"
+            "{\n"
+            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
+            "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
+            "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
+            "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
+            "  \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
+            "}\n"
+            "\nExamples:\n" +
+            HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Array ret;
+Object obj;
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+//std::vector<CMasternode> final_list;
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == 5050) {
+//obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
+obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
+//obj.push_back(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
+ret.push_back(obj);
+//final_list.push_back(mn);
+}// inner if
+}//for loop
+}//gettransaction if
+       // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+}//fboost_foreach
+//if (obj.size() == 0) {
+//obj.push_back(Pair("nil","nil"));
+//}
+return ret;
+
+}
 Value masternodecurrent (const Array& params, bool fHelp)
 {
     if (fHelp || (params.size() != 0))
@@ -398,11 +569,52 @@ Value masternodecurrent (const Array& params, bool fHelp)
             "}\n"
             "\nExamples:\n" +
             HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Object obj;
+//obj.push_back(Pair("You asked me for  ",params[0].get_str()));
+//        Object obj;
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == 4400) {
+obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
+obj.push_back(Pair("Addr",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
+}
+}
+}
+       // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+//return obj;
+}
+
+
+
 
     CMasternode* winner = mnodeman.GetCurrentMasterNode(1);
     if (winner) {
-        Object obj;
-
+//        Object obj;
+CTransaction wtx2; 
+uint256 hashBlock2;
+obj.push_back(Pair("MN Status: ",winner->Status()));
+obj.push_back(Pair("PAYEE SCRIPT DEST", GetScriptForDestination(winner->pubKeyCollateralAddress.GetID()).ToString()));
+if(GetTransaction(winner->vin.prevout.hash, wtx2, hashBlock2, true)) {
+for (int i = 0; i< wtx2.vout.size(); i++) {
+obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx2.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(winner->pubKeyCollateralAddress.GetID()).ToString()) {
+obj.push_back(Pair("Found MN with collateral",wtx2.vout[i].nValue/100000000));
+}
+}
+	obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+}
         obj.push_back(Pair("protocol", (int64_t)winner->protocolVersion));
         obj.push_back(Pair("txhash", winner->vin.prevout.hash.ToString()));
         obj.push_back(Pair("pubkey", CBitcoinAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));

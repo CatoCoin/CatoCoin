@@ -136,7 +136,14 @@ Value getinfo(const Array& params, bool fHelp)
         nStaking = true;
     obj.push_back(Pair("staking status", (nStaking ? "Staking Active" : "Staking Not Active")));
     obj.push_back(Pair("errors", GetWarnings("statusbar")));
-        obj.push_back(Pair("MN collateral", (int)GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)));
+        obj.push_back(Pair("Tier 1 collateral", (int)GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)));
+        obj.push_back(Pair("Tier 2 collateral", (int)GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL)));
+        obj.push_back(Pair("Tier 3 collateral", (int)GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)));
+
+if (chainActive.Height() >= 495217) {
+        obj.push_back(Pair("MN reward", GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
+        obj.push_back(Pair("Staking reward", GetBlockValue(chainActive.Height()) - GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
+} else {
 	double blk_reward = 0;
 	int collat = GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL);
 	if (collat == 2750) {
@@ -185,8 +192,8 @@ Value getinfo(const Array& params, bool fHelp)
                 blk_reward = 15.18;
         }
         obj.push_back(Pair("MN reward", (double)blk_reward*.7));
-        obj.push_back(Pair("Staking reward", (double)blk_reward*.3));
-
+        obj.push_back(Pair("Staking reward", (double)blk_reward*.05));
+}
     return obj;
 }
 

@@ -2164,6 +2164,94 @@ if (!vMasternodez.empty()){
         }
     }
 */
+//    int64_t nSubsidy = 0;
+
+if (chainActive.Height() >= 495217) {
+if(nHeight <= GetSporkValue(SPORK_58_LAST_69650_COLLAT_BLOCK)) {
+return 10 * COIN;
+}
+if (nHeight <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)) {
+return 52 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_38_LAST_26250_COLLAT_BLOCK)) {
+return 50 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_39_LAST_27575_COLLAT_BLOCK)) {
+return 48 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_40_LAST_28950_COLLAT_BLOCK)) {
+return 46 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_41_LAST_30400_COLLAT_BLOCK)) {
+return 44 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_42_LAST_31900_COLLAT_BLOCK)) {
+return 42 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_43_LAST_33500_COLLAT_BLOCK)) {
+return 40 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_44_LAST_35175_COLLAT_BLOCK)) {
+return 38 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_45_LAST_36925_COLLAT_BLOCK)) {
+return 36 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_46_LAST_38775_COLLAT_BLOCK)) {
+return 34 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_47_LAST_40725_COLLAT_BLOCK)) {
+return 32 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_48_LAST_42750_COLLAT_BLOCK)) {
+return 30 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_49_LAST_44900_COLLAT_BLOCK)) {
+return 28 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_50_LAST_47150_COLLAT_BLOCK)) {
+return 26 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_51_LAST_49500_COLLAT_BLOCK)) {
+return 24 * COIN;
+}
+if (nHeight <= GetSporkValue( SPORK_52_LAST_51975_COLLAT_BLOCK)) {
+return 22 * COIN;
+}
+
+
+if (nHeight <= GetSporkValue( SPORK_53_LAST_54575_COLLAT_BLOCK)) {
+return 20 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_54_LAST_57304_COLLAT_BLOCK)) {
+return 18 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_55_LAST_60169_COLLAT_BLOCK)) {
+return 16 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_56_LAST_63175_COLLAT_BLOCK)) {
+return 14 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_57_LAST_66325_COLLAT_BLOCK)) {
+return 12 * COIN;
+}
+
+if (nHeight <= GetSporkValue( SPORK_58_LAST_69650_COLLAT_BLOCK)) {
+return 10 * COIN;
+}
+
+
+
+
+
+}
+
     int64_t nSubsidy = 0;
 
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
@@ -2277,6 +2365,10 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
             return 0;
     }
 	
+if (chainActive.Height() >= 495217) {
+
+return blockValue / 100 * 95; //95%
+}
 	// 80% for Masternodes
 	if (nHeight > 1) {
 		  ret = blockValue  / 100 * 70; //70%

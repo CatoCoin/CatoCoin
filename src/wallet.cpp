@@ -1684,7 +1684,111 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                 pcoin->vout[i].nValue == 6200 * COIN ||
                 pcoin->vout[i].nValue == 6600 * COIN ||
                 pcoin->vout[i].nValue == 2200 * COIN ||
-                pcoin->vout[i].nValue == 7100 * COIN ));
+                pcoin->vout[i].nValue == 7100 * COIN ||
+
+
+
+
+
+
+
+
+//poop
+
+
+
+
+                pcoin->vout[i].nValue == 25000 * COIN ||
+                pcoin->vout[i].nValue == 26250 * COIN ||
+                pcoin->vout[i].nValue == 27575 * COIN ||
+                pcoin->vout[i].nValue == 28950 * COIN ||
+                pcoin->vout[i].nValue == 30400 * COIN ||
+                pcoin->vout[i].nValue == 31900 * COIN ||
+                pcoin->vout[i].nValue == 33500 * COIN ||
+                pcoin->vout[i].nValue == 35175 * COIN ||
+                pcoin->vout[i].nValue == 36925 * COIN ||
+                pcoin->vout[i].nValue == 38775 * COIN ||
+                pcoin->vout[i].nValue == 40725 * COIN ||
+                pcoin->vout[i].nValue == 42750 * COIN ||
+                pcoin->vout[i].nValue == 44900 * COIN ||
+                pcoin->vout[i].nValue == 47150 * COIN ||
+                pcoin->vout[i].nValue == 49500 * COIN ||
+                pcoin->vout[i].nValue == 51975 * COIN ||
+                pcoin->vout[i].nValue == 54575 * COIN ||
+                pcoin->vout[i].nValue == 57304 * COIN ||
+                pcoin->vout[i].nValue == 60169 * COIN ||
+                pcoin->vout[i].nValue == 63715 * COIN ||
+                pcoin->vout[i].nValue == 66315 * COIN ||
+                pcoin->vout[i].nValue == 69650 * COIN ||
+
+
+
+
+
+                pcoin->vout[i].nValue == 60000 * COIN ||
+                pcoin->vout[i].nValue == 63000 * COIN ||
+                pcoin->vout[i].nValue == 66150 * COIN ||
+                pcoin->vout[i].nValue == 69450 * COIN ||
+                pcoin->vout[i].nValue == 72900 * COIN ||
+                pcoin->vout[i].nValue == 76575 * COIN ||
+                pcoin->vout[i].nValue == 80400 * COIN ||
+                pcoin->vout[i].nValue == 84425 * COIN ||
+                pcoin->vout[i].nValue == 88650 * COIN ||
+                pcoin->vout[i].nValue == 93083 * COIN ||
+                pcoin->vout[i].nValue == 97725 * COIN ||
+                pcoin->vout[i].nValue == 102611 * COIN ||
+                pcoin->vout[i].nValue == 107750 * COIN ||
+                pcoin->vout[i].nValue == 113125 * COIN ||
+                pcoin->vout[i].nValue == 118800 * COIN ||
+                pcoin->vout[i].nValue == 124725 * COIN ||
+                pcoin->vout[i].nValue == 130975 * COIN ||
+                pcoin->vout[i].nValue == 137500 * COIN ||
+                pcoin->vout[i].nValue == 144400 * COIN ||
+                pcoin->vout[i].nValue == 151600 * COIN ||
+                pcoin->vout[i].nValue == 159180 * COIN ||
+                pcoin->vout[i].nValue == 167150 * COIN ||
+
+
+
+
+
+
+                pcoin->vout[i].nValue == 100000 * COIN ||
+                pcoin->vout[i].nValue == 105000 * COIN ||
+                pcoin->vout[i].nValue == 110250 * COIN ||
+                pcoin->vout[i].nValue == 115750 * COIN ||
+                pcoin->vout[i].nValue == 121550 * COIN ||
+                pcoin->vout[i].nValue == 127625 * COIN ||
+                pcoin->vout[i].nValue == 134000 * COIN ||
+                pcoin->vout[i].nValue == 140700 * COIN ||
+                pcoin->vout[i].nValue == 147750 * COIN ||
+                pcoin->vout[i].nValue == 155150 * COIN ||
+                pcoin->vout[i].nValue == 162900 * COIN ||
+                pcoin->vout[i].nValue == 171000 * COIN ||
+                pcoin->vout[i].nValue == 179600 * COIN ||
+                pcoin->vout[i].nValue == 188580 * COIN ||
+                pcoin->vout[i].nValue == 198000 * COIN ||
+                pcoin->vout[i].nValue == 207900 * COIN ||
+                pcoin->vout[i].nValue == 218275 * COIN ||
+                pcoin->vout[i].nValue == 229200 * COIN ||
+                pcoin->vout[i].nValue == 240650 * COIN ||
+                pcoin->vout[i].nValue == 252683 * COIN ||
+                pcoin->vout[i].nValue == 265317 * COIN ||
+                pcoin->vout[i].nValue == 278600 * COIN 
+
+
+
+
+
+
+
+
+
+
+
+
+
+));
                 } else if (nCoinType == ONLY_NONDENOMINATED_NOT10000IFMN) {
                     if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !IsDenominatedAmount(pcoin->vout[i].nValue);
@@ -1723,7 +1827,133 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                 pcoin->vout[i].nValue == 6200 * COIN ||
                 pcoin->vout[i].nValue == 6600 * COIN ||
                 pcoin->vout[i].nValue == 2200 * COIN ||
-                pcoin->vout[i].nValue == 7100 * COIN );
+                pcoin->vout[i].nValue == 7100 * COIN ||
+
+
+
+
+
+
+
+
+
+
+//poop2
+
+
+
+
+
+
+
+
+                pcoin->vout[i].nValue == 25000 * COIN ||
+                pcoin->vout[i].nValue == 26250 * COIN ||
+                pcoin->vout[i].nValue == 27575 * COIN ||
+                pcoin->vout[i].nValue == 28950 * COIN ||
+                pcoin->vout[i].nValue == 30400 * COIN ||
+                pcoin->vout[i].nValue == 31900 * COIN ||
+                pcoin->vout[i].nValue == 33500 * COIN ||
+                pcoin->vout[i].nValue == 35175 * COIN ||
+                pcoin->vout[i].nValue == 36925 * COIN ||
+                pcoin->vout[i].nValue == 38775 * COIN ||
+                pcoin->vout[i].nValue == 40725 * COIN ||
+                pcoin->vout[i].nValue == 42750 * COIN ||
+                pcoin->vout[i].nValue == 44900 * COIN ||
+                pcoin->vout[i].nValue == 47150 * COIN ||
+                pcoin->vout[i].nValue == 49500 * COIN ||
+                pcoin->vout[i].nValue == 51975 * COIN ||
+                pcoin->vout[i].nValue == 54575 * COIN ||
+                pcoin->vout[i].nValue == 57304 * COIN ||
+                pcoin->vout[i].nValue == 60169 * COIN ||
+                pcoin->vout[i].nValue == 63715 * COIN ||
+                pcoin->vout[i].nValue == 66315 * COIN ||
+                pcoin->vout[i].nValue == 69650 * COIN ||
+
+
+
+
+
+                pcoin->vout[i].nValue == 60000 * COIN ||
+                pcoin->vout[i].nValue == 63000 * COIN ||
+                pcoin->vout[i].nValue == 66150 * COIN ||
+                pcoin->vout[i].nValue == 69450 * COIN ||
+                pcoin->vout[i].nValue == 72900 * COIN ||
+                pcoin->vout[i].nValue == 76575 * COIN ||
+                pcoin->vout[i].nValue == 80400 * COIN ||
+                pcoin->vout[i].nValue == 84425 * COIN ||
+                pcoin->vout[i].nValue == 88650 * COIN ||
+                pcoin->vout[i].nValue == 93083 * COIN ||
+                pcoin->vout[i].nValue == 97725 * COIN ||
+                pcoin->vout[i].nValue == 102611 * COIN ||
+                pcoin->vout[i].nValue == 107750 * COIN ||
+                pcoin->vout[i].nValue == 113125 * COIN ||
+                pcoin->vout[i].nValue == 118800 * COIN ||
+                pcoin->vout[i].nValue == 124725 * COIN ||
+                pcoin->vout[i].nValue == 130975 * COIN ||
+                pcoin->vout[i].nValue == 137500 * COIN ||
+                pcoin->vout[i].nValue == 144400 * COIN ||
+                pcoin->vout[i].nValue == 151600 * COIN ||
+                pcoin->vout[i].nValue == 159180 * COIN ||
+                pcoin->vout[i].nValue == 167150 * COIN ||
+
+
+
+
+
+
+                pcoin->vout[i].nValue == 100000 * COIN ||
+                pcoin->vout[i].nValue == 105000 * COIN ||
+                pcoin->vout[i].nValue == 110250 * COIN ||
+                pcoin->vout[i].nValue == 115750 * COIN ||
+                pcoin->vout[i].nValue == 121550 * COIN ||
+                pcoin->vout[i].nValue == 127625 * COIN ||
+                pcoin->vout[i].nValue == 134000 * COIN ||
+                pcoin->vout[i].nValue == 140700 * COIN ||
+                pcoin->vout[i].nValue == 147750 * COIN ||
+                pcoin->vout[i].nValue == 155150 * COIN ||
+                pcoin->vout[i].nValue == 162900 * COIN ||
+                pcoin->vout[i].nValue == 171000 * COIN ||
+                pcoin->vout[i].nValue == 179600 * COIN ||
+                pcoin->vout[i].nValue == 188580 * COIN ||
+                pcoin->vout[i].nValue == 198000 * COIN ||
+                pcoin->vout[i].nValue == 207900 * COIN ||
+                pcoin->vout[i].nValue == 218275 * COIN ||
+                pcoin->vout[i].nValue == 229200 * COIN ||
+                pcoin->vout[i].nValue == 240650 * COIN ||
+                pcoin->vout[i].nValue == 252683 * COIN ||
+                pcoin->vout[i].nValue == 265317 * COIN ||
+                pcoin->vout[i].nValue == 278600 * COIN 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);
 
                 } else if (nCoinType == ONLY_10000) {
                     found = (pcoin->vout[i].nValue == 2000 * COIN ||
@@ -1761,7 +1991,107 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                 pcoin->vout[i].nValue == 6200 * COIN ||
                 pcoin->vout[i].nValue == 6600 * COIN ||
                 pcoin->vout[i].nValue == 2200 * COIN ||
-                pcoin->vout[i].nValue == 7100 * COIN );
+                pcoin->vout[i].nValue == 7100 * COIN ||
+
+
+
+
+
+
+//poop3
+
+
+
+                pcoin->vout[i].nValue == 25000 * COIN ||
+                pcoin->vout[i].nValue == 26250 * COIN ||
+                pcoin->vout[i].nValue == 27575 * COIN ||
+                pcoin->vout[i].nValue == 28950 * COIN ||
+                pcoin->vout[i].nValue == 30400 * COIN ||
+                pcoin->vout[i].nValue == 31900 * COIN ||
+                pcoin->vout[i].nValue == 33500 * COIN ||
+                pcoin->vout[i].nValue == 35175 * COIN ||
+                pcoin->vout[i].nValue == 36925 * COIN ||
+                pcoin->vout[i].nValue == 38775 * COIN ||
+                pcoin->vout[i].nValue == 40725 * COIN ||
+                pcoin->vout[i].nValue == 42750 * COIN ||
+                pcoin->vout[i].nValue == 44900 * COIN ||
+                pcoin->vout[i].nValue == 47150 * COIN ||
+                pcoin->vout[i].nValue == 49500 * COIN ||
+                pcoin->vout[i].nValue == 51975 * COIN ||
+                pcoin->vout[i].nValue == 54575 * COIN ||
+                pcoin->vout[i].nValue == 57304 * COIN ||
+                pcoin->vout[i].nValue == 60169 * COIN ||
+                pcoin->vout[i].nValue == 63715 * COIN ||
+                pcoin->vout[i].nValue == 66315 * COIN ||
+                pcoin->vout[i].nValue == 69650 * COIN ||
+
+
+
+
+
+                pcoin->vout[i].nValue == 60000 * COIN ||
+                pcoin->vout[i].nValue == 63000 * COIN ||
+                pcoin->vout[i].nValue == 66150 * COIN ||
+                pcoin->vout[i].nValue == 69450 * COIN ||
+                pcoin->vout[i].nValue == 72900 * COIN ||
+                pcoin->vout[i].nValue == 76575 * COIN ||
+                pcoin->vout[i].nValue == 80400 * COIN ||
+                pcoin->vout[i].nValue == 84425 * COIN ||
+                pcoin->vout[i].nValue == 88650 * COIN ||
+                pcoin->vout[i].nValue == 93083 * COIN ||
+                pcoin->vout[i].nValue == 97725 * COIN ||
+                pcoin->vout[i].nValue == 102611 * COIN ||
+                pcoin->vout[i].nValue == 107750 * COIN ||
+                pcoin->vout[i].nValue == 113125 * COIN ||
+                pcoin->vout[i].nValue == 118800 * COIN ||
+                pcoin->vout[i].nValue == 124725 * COIN ||
+                pcoin->vout[i].nValue == 130975 * COIN ||
+                pcoin->vout[i].nValue == 137500 * COIN ||
+                pcoin->vout[i].nValue == 144400 * COIN ||
+                pcoin->vout[i].nValue == 151600 * COIN ||
+                pcoin->vout[i].nValue == 159180 * COIN ||
+                pcoin->vout[i].nValue == 167150 * COIN ||
+
+
+
+
+
+
+                pcoin->vout[i].nValue == 100000 * COIN ||
+                pcoin->vout[i].nValue == 105000 * COIN ||
+                pcoin->vout[i].nValue == 110250 * COIN ||
+                pcoin->vout[i].nValue == 115750 * COIN ||
+                pcoin->vout[i].nValue == 121550 * COIN ||
+                pcoin->vout[i].nValue == 127625 * COIN ||
+                pcoin->vout[i].nValue == 134000 * COIN ||
+                pcoin->vout[i].nValue == 140700 * COIN ||
+                pcoin->vout[i].nValue == 147750 * COIN ||
+                pcoin->vout[i].nValue == 155150 * COIN ||
+                pcoin->vout[i].nValue == 162900 * COIN ||
+                pcoin->vout[i].nValue == 171000 * COIN ||
+                pcoin->vout[i].nValue == 179600 * COIN ||
+                pcoin->vout[i].nValue == 188580 * COIN ||
+                pcoin->vout[i].nValue == 198000 * COIN ||
+                pcoin->vout[i].nValue == 207900 * COIN ||
+                pcoin->vout[i].nValue == 218275 * COIN ||
+                pcoin->vout[i].nValue == 229200 * COIN ||
+                pcoin->vout[i].nValue == 240650 * COIN ||
+                pcoin->vout[i].nValue == 252683 * COIN ||
+                pcoin->vout[i].nValue == 265317 * COIN ||
+                pcoin->vout[i].nValue == 278600 * COIN 
+
+
+
+
+
+
+
+
+
+
+
+
+);
 
                 } else {
                     found = true;

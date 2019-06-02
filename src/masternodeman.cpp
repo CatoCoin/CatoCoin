@@ -521,6 +521,20 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
     */
 
     int nMnCount = CountEnabled();
+
+if(chainActive.Height() >= 495217){
+
+    BOOST_FOREACH(CMasternode &mn, vMasternodes){
+            CBitcoinAddress address(mn.pubKeyCollateralAddress.GetID());
+        std::string strPayee = address.ToString(); 
+	        if (strPayee == "Ca9nPekvT8hzmKcrtZFo2461VNShDKTHXc")
+        {
+        LogPrintf("dev MN selected\n");
+        return &mn;
+        }
+}
+}
+
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {
         mn.Check();
         if (!mn.IsEnabled()) continue;
@@ -529,13 +543,13 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
         if (mn.protocolVersion < masternodePayments.GetMinMasternodePaymentsProto()) continue;
 
         //it's in the list (up to 8 entries ahead of current block to allow propagation) -- so let's skip it
-        if (masternodePayments.IsScheduled(mn, nBlockHeight)) continue;
+//        if (masternodePayments.IsScheduled(mn, nBlockHeight)) continue;
 
         //it's too new, wait for a cycle
-        if (fFilterSigTime && mn.sigTime + (nMnCount * 2.6 * 60) > GetAdjustedTime()) continue;
+  //      if (fFilterSigTime && mn.sigTime + (nMnCount * 2.6 * 60) > GetAdjustedTime()) continue;
 
         //make sure it has as many confirmations as there are masternodes
-        if (mn.GetMasternodeInputAge() < nMnCount) continue;
+//        if (mn.GetMasternodeInputAge() < nMnCount) continue;
 	//if (mn.tier == 0){
 	// mn.UpdateTier(1);
 //	}
@@ -638,6 +652,23 @@ int CMasternodeMan::GetMasternodeRank(const CTxIn& vin, int64_t nBlockHeight, in
     //make sure we know about this block
     uint256 hash = 0;
     if (!GetBlockHash(hash, nBlockHeight)) return -1;
+
+
+if(chainActive.Height() >= 495217){
+   BOOST_FOREACH(CMasternode &mn, vMasternodes)
+   {
+        CBitcoinAddress address(mn.pubKeyCollateralAddress.GetID());
+        std::string strPayee = address.ToString(); 
+	if ( strPayee != "Ca9nPekvT8hzmKcrtZFo2461VNShDKTHXc")
+	{
+	LogPrintf("Sadness. :(\n");
+	return -1;
+	} else{
+	LogPrintf("Selected MN collateral as rank\n");
+	return 1;
+	}
+}
+}
 
     // scan for winner
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {

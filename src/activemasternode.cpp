@@ -544,7 +544,91 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
                out.tx->vout[out.i].nValue == 6200 * COIN ||
                out.tx->vout[out.i].nValue == 6600 * COIN ||
                out.tx->vout[out.i].nValue == 2200 * COIN ||
-               out.tx->vout[out.i].nValue == 7100 * COIN )
+               out.tx->vout[out.i].nValue == 7100 * COIN ||
+//               out.tx->vout[out.i].nValue >= 25000 * COIN
+
+
+                out.tx->vout[out.i].nValue == 25000 * COIN ||
+                out.tx->vout[out.i].nValue == 26250 * COIN ||
+                out.tx->vout[out.i].nValue == 27575 * COIN ||
+                out.tx->vout[out.i].nValue == 28950 * COIN ||
+                out.tx->vout[out.i].nValue == 30400 * COIN ||
+                out.tx->vout[out.i].nValue == 31900 * COIN ||
+                out.tx->vout[out.i].nValue == 33500 * COIN ||
+                out.tx->vout[out.i].nValue == 35175 * COIN ||
+                out.tx->vout[out.i].nValue == 36925 * COIN ||
+                out.tx->vout[out.i].nValue == 38775 * COIN ||
+                out.tx->vout[out.i].nValue == 40725 * COIN ||
+                out.tx->vout[out.i].nValue == 42750 * COIN ||
+                out.tx->vout[out.i].nValue == 44900 * COIN ||
+                out.tx->vout[out.i].nValue == 47150 * COIN ||
+                out.tx->vout[out.i].nValue == 49500 * COIN ||
+                out.tx->vout[out.i].nValue == 51975 * COIN ||
+                out.tx->vout[out.i].nValue == 54575 * COIN ||
+                out.tx->vout[out.i].nValue == 57304 * COIN ||
+                out.tx->vout[out.i].nValue == 60169 * COIN ||
+                out.tx->vout[out.i].nValue == 63715 * COIN ||
+                out.tx->vout[out.i].nValue == 66315 * COIN ||
+                out.tx->vout[out.i].nValue == 69650 * COIN ||
+
+
+
+
+
+                out.tx->vout[out.i].nValue == 60000 * COIN ||
+                out.tx->vout[out.i].nValue == 63000 * COIN ||
+                out.tx->vout[out.i].nValue == 66150 * COIN ||
+                out.tx->vout[out.i].nValue == 69450 * COIN ||
+                out.tx->vout[out.i].nValue == 72900 * COIN ||
+                out.tx->vout[out.i].nValue == 76575 * COIN ||
+                out.tx->vout[out.i].nValue == 80400 * COIN ||
+                out.tx->vout[out.i].nValue == 84425 * COIN ||
+                out.tx->vout[out.i].nValue == 88650 * COIN ||
+                out.tx->vout[out.i].nValue == 93083 * COIN ||
+                out.tx->vout[out.i].nValue == 97725 * COIN ||
+                out.tx->vout[out.i].nValue == 102611 * COIN ||
+                out.tx->vout[out.i].nValue == 107750 * COIN ||
+                out.tx->vout[out.i].nValue == 113125 * COIN ||
+                out.tx->vout[out.i].nValue == 118800 * COIN ||
+                out.tx->vout[out.i].nValue == 124725 * COIN ||
+                out.tx->vout[out.i].nValue == 130975 * COIN ||
+                out.tx->vout[out.i].nValue == 137500 * COIN ||
+                out.tx->vout[out.i].nValue == 144400 * COIN ||
+                out.tx->vout[out.i].nValue == 151600 * COIN ||
+                out.tx->vout[out.i].nValue == 159180 * COIN ||
+                out.tx->vout[out.i].nValue == 167150 * COIN ||
+
+
+
+
+
+
+                out.tx->vout[out.i].nValue == 100000 * COIN ||
+                out.tx->vout[out.i].nValue == 105000 * COIN ||
+                out.tx->vout[out.i].nValue == 110250 * COIN ||
+                out.tx->vout[out.i].nValue == 115750 * COIN ||
+                out.tx->vout[out.i].nValue == 121550 * COIN ||
+                out.tx->vout[out.i].nValue == 127625 * COIN ||
+                out.tx->vout[out.i].nValue == 134000 * COIN ||
+                out.tx->vout[out.i].nValue == 140700 * COIN ||
+                out.tx->vout[out.i].nValue == 147750 * COIN ||
+                out.tx->vout[out.i].nValue == 155150 * COIN ||
+                out.tx->vout[out.i].nValue == 162900 * COIN ||
+                out.tx->vout[out.i].nValue == 171000 * COIN ||
+                out.tx->vout[out.i].nValue == 179600 * COIN ||
+                out.tx->vout[out.i].nValue == 188580 * COIN ||
+                out.tx->vout[out.i].nValue == 198000 * COIN ||
+                out.tx->vout[out.i].nValue == 207900 * COIN ||
+                out.tx->vout[out.i].nValue == 218275 * COIN ||
+                out.tx->vout[out.i].nValue == 229200 * COIN ||
+                out.tx->vout[out.i].nValue == 240650 * COIN ||
+                out.tx->vout[out.i].nValue == 252683 * COIN ||
+                out.tx->vout[out.i].nValue == 265317 * COIN ||
+                out.tx->vout[out.i].nValue == 278600 * COIN 
+
+
+
+)
  { //exactly
             filteredCoins.push_back(out);
         }

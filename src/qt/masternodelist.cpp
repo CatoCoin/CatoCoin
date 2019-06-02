@@ -185,17 +185,22 @@ void MasternodeList::updateMyMasternodeInfo(QString strAlias, QString strAddr, C
     GUIUtil::DHMSTableWidgetItem* activeSecondsItem = new GUIUtil::DHMSTableWidgetItem(pmn ? (pmn->lastPing.sigTime - pmn->sigTime) : 0);
     QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", pmn ? pmn->lastPing.sigTime : 0)));
     QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(pmn ? CBitcoinAddress(pmn->pubKeyCollateralAddress.GetID()).ToString() : ""));
-    QTableWidgetItem* tierItem = new QTableWidgetItem(QString::number(GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)));
+    QTableWidgetItem* tierItem1 = new QTableWidgetItem(QString::number(GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)));
+    QTableWidgetItem* tierItem2 = new QTableWidgetItem(QString::number(GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL)));
+    QTableWidgetItem* tierItem3 = new QTableWidgetItem(QString::number(GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)));
 
 
     ui->tableWidgetMyMasternodes->setItem(nNewRow, 0, aliasItem);
     ui->tableWidgetMyMasternodes->setItem(nNewRow, 1, addrItem);
     ui->tableWidgetMyMasternodes->setItem(nNewRow, 2, protocolItem);
-    ui->tableWidgetMyMasternodes->setItem(nNewRow, 3, tierItem);
-    ui->tableWidgetMyMasternodes->setItem(nNewRow, 4, statusItem);
-    ui->tableWidgetMyMasternodes->setItem(nNewRow, 5, activeSecondsItem);
-    ui->tableWidgetMyMasternodes->setItem(nNewRow, 6, lastSeenItem);
-    ui->tableWidgetMyMasternodes->setItem(nNewRow, 7, pubkeyItem);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 3, tierItem1);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 4, tierItem2);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 5, tierItem3);
+
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 6, statusItem);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 7, activeSecondsItem);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 8, lastSeenItem);
+    ui->tableWidgetMyMasternodes->setItem(nNewRow, 9, pubkeyItem);
 }
 
 void MasternodeList::updateMyNodeList(bool fForce)

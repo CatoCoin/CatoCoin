@@ -2152,7 +2152,94 @@ bool CObfuScationSigner::IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey)
     }
     if (GetTransaction(vin.prevout.hash, txVin, hash, true)) {
         BOOST_FOREACH (CTxOut out, txVin.vout) {
-            if (out.nValue == 2000 * COIN ||
+            if (
+
+                out.nValue == 25000 * COIN ||
+                out.nValue == 26250 * COIN ||
+                out.nValue == 27575 * COIN ||
+                out.nValue == 28950 * COIN ||
+                out.nValue == 30400 * COIN ||
+                out.nValue == 31900 * COIN ||
+                out.nValue == 33500 * COIN ||
+                out.nValue == 35175 * COIN ||
+                out.nValue == 36925 * COIN ||
+                out.nValue == 38775 * COIN ||
+                out.nValue == 40725 * COIN ||
+                out.nValue == 42750 * COIN ||
+                out.nValue == 44900 * COIN ||
+                out.nValue == 47150 * COIN ||
+                out.nValue == 49500 * COIN ||
+                out.nValue == 51975 * COIN ||
+                out.nValue == 54575 * COIN ||
+                out.nValue == 57304 * COIN ||
+                out.nValue == 60169 * COIN ||
+                out.nValue == 63715 * COIN ||
+                out.nValue == 66315 * COIN ||
+                out.nValue == 69650 * COIN ||
+
+
+
+
+
+                out.nValue == 60000 * COIN ||
+                out.nValue == 63000 * COIN ||
+                out.nValue == 66150 * COIN ||
+                out.nValue == 69450 * COIN ||
+                out.nValue == 72900 * COIN ||
+                out.nValue == 76575 * COIN ||
+                out.nValue == 80400 * COIN ||
+                out.nValue == 84425 * COIN ||
+                out.nValue == 88650 * COIN ||
+                out.nValue == 93083 * COIN ||
+                out.nValue == 97725 * COIN ||
+                out.nValue == 102611 * COIN ||
+                out.nValue == 107750 * COIN ||
+                out.nValue == 113125 * COIN ||
+                out.nValue == 118800 * COIN ||
+                out.nValue == 124725 * COIN ||
+                out.nValue == 130975 * COIN ||
+                out.nValue == 137500 * COIN ||
+                out.nValue == 144400 * COIN ||
+                out.nValue == 151600 * COIN ||
+                out.nValue == 159180 * COIN ||
+                out.nValue == 167150 * COIN ||
+
+
+
+
+
+
+                out.nValue == 100000 * COIN ||
+                out.nValue == 105000 * COIN ||
+                out.nValue == 110250 * COIN ||
+                out.nValue == 115750 * COIN ||
+                out.nValue == 121550 * COIN ||
+                out.nValue == 127625 * COIN ||
+                out.nValue == 134000 * COIN ||
+                out.nValue == 140700 * COIN ||
+                out.nValue == 147750 * COIN ||
+                out.nValue == 155150 * COIN ||
+                out.nValue == 162900 * COIN ||
+                out.nValue == 171000 * COIN ||
+                out.nValue == 179600 * COIN ||
+                out.nValue == 188580 * COIN ||
+                out.nValue == 198000 * COIN ||
+                out.nValue == 207900 * COIN ||
+                out.nValue == 218275 * COIN ||
+                out.nValue == 229200 * COIN ||
+                out.nValue == 240650 * COIN ||
+                out.nValue == 252683 * COIN ||
+                out.nValue == 265317 * COIN ||
+                out.nValue == 278600 * COIN ||
+
+
+
+
+
+
+
+
+out.nValue == 2000 * COIN ||
 		out.nValue == 2400 * COIN ||
 		out.nValue == 2550 * COIN ||
 		out.nValue == 2750 * COIN ||
