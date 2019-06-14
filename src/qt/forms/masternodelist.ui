@@ -131,11 +131,6 @@
             <property name="text">
              <string>Protocol</string>
             </property>
-	   </column>
-	   <column>
-            <property name="text">
-             <string>NEW_MN_COLLAT_REQ</string>
-            </property>
            </column>
            <column>
             <property name="text">
