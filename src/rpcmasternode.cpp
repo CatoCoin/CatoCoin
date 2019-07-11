@@ -316,6 +316,268 @@ Value listmasternodes(const Array& params, bool fHelp)
             CNetAddr node = CNetAddr(strHost, false);
             std::string strNetwork = GetNetworkName(node.GetNetwork());
 
+
+
+int level;
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+//std::vector<CMasternode> final_list;
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 >= 25000) {
+unsigned int collat_required;
+
+CTransaction wtx2;
+uint256 hashBlock2;
+if(GetTransaction(mn.vin.prevout.hash, wtx2, hashBlock2, true)) {
+//hashblock2 now has the block hash
+BlockMap::iterator iter = mapBlockIndex.find(hashBlock2);
+if (iter != mapBlockIndex.end()) {
+unsigned int txnheight = iter->second->nHeight;
+//block height of txn
+if (txnheight <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
+collat_required = 25000;
+} else if (txnheight <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
+collat_required = 26250;
+} else if (txnheight <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
+collat_required = 27575;
+} else if (txnheight <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
+collat_required = 28950;
+} else if (txnheight <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
+collat_required = 30400;
+} else if (txnheight <= GetSporkValue(SPORK_42_LAST_31900_COLLAT_BLOCK)){
+collat_required = 31900;
+} else if (txnheight <= GetSporkValue(SPORK_43_LAST_33500_COLLAT_BLOCK)){
+collat_required = 33500;
+} else if (txnheight <= GetSporkValue(SPORK_44_LAST_35175_COLLAT_BLOCK)){
+collat_required = 35175;
+} else if (txnheight <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
+collat_required = 36925;
+} else if (txnheight <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
+collat_required = 38775;
+} else if (txnheight <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
+collat_required = 40725;
+} else if (txnheight <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
+collat_required = 42750;
+} else if (txnheight <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
+collat_required = 44900;
+} else if (txnheight <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){
+collat_required = 47150;
+} else if (txnheight <= GetSporkValue(SPORK_51_LAST_49500_COLLAT_BLOCK)){
+collat_required = 49500;
+} else if (txnheight <= GetSporkValue(SPORK_52_LAST_51975_COLLAT_BLOCK)){
+collat_required = 51975;
+} else if (txnheight <= GetSporkValue(SPORK_53_LAST_54575_COLLAT_BLOCK)){
+collat_required = 54575;
+} else if (txnheight <= GetSporkValue(SPORK_54_LAST_57304_COLLAT_BLOCK)){
+collat_required = 57304;
+} else if (txnheight <= GetSporkValue(SPORK_55_LAST_60169_COLLAT_BLOCK)){
+
+collat_required = 60169;
+} else if (txnheight <= GetSporkValue(SPORK_56_LAST_63175_COLLAT_BLOCK)){
+
+collat_required = 63175;
+} else if (txnheight <= GetSporkValue(SPORK_57_LAST_66325_COLLAT_BLOCK)){
+
+collat_required = 66325;
+
+} else if (txnheight <= GetSporkValue(SPORK_58_LAST_69650_COLLAT_BLOCK)){
+
+collat_required = 69650;
+}
+
+} else {
+collat_required = 69650;
+}
+} else {
+collat_required = 69650;
+}
+
+
+
+if (wtx.vout[i].nValue/100000000 >= collat_required) {
+level=1;
+//count_tier_1 += 1;
+}
+}// inner if
+
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 >= 60000) {
+unsigned int collat_required2;
+
+CTransaction wtx3;
+uint256 hashBlock3;
+if(GetTransaction(mn.vin.prevout.hash, wtx3, hashBlock3, true)) {
+//hashBlock3 now has the block hash
+BlockMap::iterator iter = mapBlockIndex.find(hashBlock3);
+if (iter != mapBlockIndex.end()) {
+unsigned int txnheight2 = iter->second->nHeight;
+//block height of txn
+if (txnheight2 <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
+collat_required2 = 60000;
+} else if (txnheight2 <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
+collat_required2 = 63000;
+} else if (txnheight2 <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
+collat_required2 = 66150;
+} else if (txnheight2 <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
+collat_required2 = 69450;
+} else if (txnheight2 <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
+collat_required2 = 72900;
+} else if (txnheight2 <= GetSporkValue(SPORK_42_LAST_31900_COLLAT_BLOCK)){
+collat_required2 = 76575;
+} else if (txnheight2 <= GetSporkValue(SPORK_43_LAST_33500_COLLAT_BLOCK)){
+collat_required2 = 80400;
+} else if (txnheight2 <= GetSporkValue(SPORK_44_LAST_35175_COLLAT_BLOCK)){
+collat_required2 = 84425;
+} else if (txnheight2 <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
+collat_required2 = 88650;
+} else if (txnheight2 <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
+collat_required2 = 93083;
+} else if (txnheight2 <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
+collat_required2 = 97725;
+} else if (txnheight2 <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
+collat_required2 = 102611;
+} else if (txnheight2 <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
+collat_required2 = 107750;
+} else if (txnheight2 <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){
+collat_required2 = 113125;
+} else if (txnheight2 <= GetSporkValue(SPORK_51_LAST_49500_COLLAT_BLOCK)){
+collat_required2 = 118800;
+} else if (txnheight2 <= GetSporkValue(SPORK_52_LAST_51975_COLLAT_BLOCK)){
+collat_required2 = 124725;
+} else if (txnheight2 <= GetSporkValue(SPORK_53_LAST_54575_COLLAT_BLOCK)){
+collat_required2 = 130975;
+} else if (txnheight2 <= GetSporkValue(SPORK_54_LAST_57304_COLLAT_BLOCK)){
+collat_required2 = 137500;
+} else if (txnheight2 <= GetSporkValue(SPORK_55_LAST_60169_COLLAT_BLOCK)){
+
+collat_required2 = 144400;
+} else if (txnheight2 <= GetSporkValue(SPORK_56_LAST_63175_COLLAT_BLOCK)){
+
+collat_required2 = 151600;
+} else if (txnheight2 <= GetSporkValue(SPORK_57_LAST_66325_COLLAT_BLOCK)){
+
+collat_required2 = 159180;
+
+} else if (txnheight2 <= GetSporkValue(SPORK_58_LAST_69650_COLLAT_BLOCK)){
+
+collat_required2 = 167150;
+}
+
+} else {
+collat_required2 = 167150;
+}
+} else {
+collat_required2 = 167150;
+}
+
+
+
+if (wtx3.vout[i].nValue/100000000 >= collat_required2) {
+level=2;
+//count_tier_2 += 1;
+}
+}// inner if
+
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 >= 100000) {
+
+
+unsigned int collat_required4;
+
+CTransaction wtx4;
+uint256 hashBlock4;
+if(GetTransaction(mn.vin.prevout.hash, wtx4, hashBlock4, true)) {
+//hashBlock4 now has the block hash
+BlockMap::iterator iter = mapBlockIndex.find(hashBlock4);
+if (iter != mapBlockIndex.end()) {
+unsigned int txnheight4 = iter->second->nHeight;
+//block height of txn
+if (txnheight4 <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
+collat_required4 = 100000;
+} else if (txnheight4 <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
+collat_required4 = 105000;
+} else if (txnheight4 <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
+collat_required4 = 110250;
+} else if (txnheight4 <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
+collat_required4 = 115750;
+} else if (txnheight4 <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
+collat_required4 = 121550;
+} else if (txnheight4 <= GetSporkValue(SPORK_42_LAST_31900_COLLAT_BLOCK)){
+collat_required4 = 127625;
+} else if (txnheight4 <= GetSporkValue(SPORK_43_LAST_33500_COLLAT_BLOCK)){
+collat_required4 = 134000;
+} else if (txnheight4 <= GetSporkValue(SPORK_44_LAST_35175_COLLAT_BLOCK)){
+collat_required4 = 140700;
+} else if (txnheight4 <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
+collat_required4 = 147750;
+} else if (txnheight4 <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
+collat_required4 = 155150;
+} else if (txnheight4 <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
+collat_required4 = 162900;
+} else if (txnheight4 <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
+collat_required4 = 171000;
+} else if (txnheight4 <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
+collat_required4 = 179600;
+} else if (txnheight4 <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){
+collat_required4 = 188580;
+} else if (txnheight4 <= GetSporkValue(SPORK_51_LAST_49500_COLLAT_BLOCK)){
+collat_required4 = 198000;
+} else if (txnheight4 <= GetSporkValue(SPORK_52_LAST_51975_COLLAT_BLOCK)){
+collat_required4 = 207900;
+} else if (txnheight4 <= GetSporkValue(SPORK_53_LAST_54575_COLLAT_BLOCK)){
+collat_required4 = 218275;
+} else if (txnheight4 <= GetSporkValue(SPORK_54_LAST_57304_COLLAT_BLOCK)){
+collat_required4 = 229200;
+} else if (txnheight4 <= GetSporkValue(SPORK_55_LAST_60169_COLLAT_BLOCK)){
+
+collat_required4 = 240650;
+} else if (txnheight4 <= GetSporkValue(SPORK_56_LAST_63175_COLLAT_BLOCK)){
+
+collat_required4 = 252683;
+} else if (txnheight4 <= GetSporkValue(SPORK_57_LAST_66325_COLLAT_BLOCK)){
+
+collat_required4 = 265317;
+
+} else if (txnheight4 <= GetSporkValue(SPORK_58_LAST_69650_COLLAT_BLOCK)){
+
+collat_required4 = 278600;
+}
+
+} else {
+collat_required4 = 278600;
+}
+} else {
+collat_required4 = 278600;
+}
+
+
+
+if (wtx4.vout[i].nValue/100000000 >= collat_required4) {
+
+level=3;
+}
+}// inner if
+
+}//for loop
+}//gettransaction if
+       // obj.push_back(Pair("Collat amnts", wtx3.ToString()));
+}//fboost_foreach
+if(level < 1) {
+continue;
+}
+	obj.push_back(Pair("level",level));
+
+
             obj.push_back(Pair("rank", (strStatus == "ENABLED" ? s.first : 0)));
             obj.push_back(Pair("network", strNetwork));
             obj.push_back(Pair("txhash", strTxHash));
