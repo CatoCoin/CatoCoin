@@ -296,6 +296,7 @@ Value listmasternodes(const Array& params, bool fHelp)
         nHeight = pindex->nHeight;
     }
     std::vector<pair<int, CMasternode> > vMasternodeRanks = mnodeman.GetMasternodeRanks(nHeight);
+
     BOOST_FOREACH (PAIRTYPE(int, CMasternode) & s, vMasternodeRanks) {
         Object obj;
         std::string strVin = s.second.vin.prevout.ToStringShort();
@@ -321,22 +322,22 @@ Value listmasternodes(const Array& params, bool fHelp)
 int level;
 CTransaction wtx; 
 uint256 hashBlock;
-    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+  //  std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
 //std::vector<CMasternode> final_list;
-BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
+//BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
 
-if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+if(GetTransaction(mn->vin.prevout.hash, wtx, hashBlock, true)) {
 for (int i = 0; i< wtx.vout.size(); i++) {
 //obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
 //obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
 if (wtx.vout[i].scriptPubKey.ToString() 
-== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+== GetScriptForDestination(mn->pubKeyCollateralAddress.GetID()).ToString() 
 && wtx.vout[i].nValue/100000000 >= 25000) {
 unsigned int collat_required;
 
 CTransaction wtx2;
 uint256 hashBlock2;
-if(GetTransaction(mn.vin.prevout.hash, wtx2, hashBlock2, true)) {
+if(GetTransaction(mn->vin.prevout.hash, wtx2, hashBlock2, true)) {
 //hashblock2 now has the block hash
 BlockMap::iterator iter = mapBlockIndex.find(hashBlock2);
 if (iter != mapBlockIndex.end()) {
@@ -409,13 +410,13 @@ level=1;
 }// inner if
 
 if (wtx.vout[i].scriptPubKey.ToString() 
-== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+== GetScriptForDestination(mn->pubKeyCollateralAddress.GetID()).ToString() 
 && wtx.vout[i].nValue/100000000 >= 60000) {
 unsigned int collat_required2;
 
 CTransaction wtx3;
 uint256 hashBlock3;
-if(GetTransaction(mn.vin.prevout.hash, wtx3, hashBlock3, true)) {
+if(GetTransaction(mn->vin.prevout.hash, wtx3, hashBlock3, true)) {
 //hashBlock3 now has the block hash
 BlockMap::iterator iter = mapBlockIndex.find(hashBlock3);
 if (iter != mapBlockIndex.end()) {
@@ -488,7 +489,7 @@ level=2;
 }// inner if
 
 if (wtx.vout[i].scriptPubKey.ToString() 
-== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+== GetScriptForDestination(mn->pubKeyCollateralAddress.GetID()).ToString() 
 && wtx.vout[i].nValue/100000000 >= 100000) {
 
 
@@ -496,7 +497,7 @@ unsigned int collat_required4;
 
 CTransaction wtx4;
 uint256 hashBlock4;
-if(GetTransaction(mn.vin.prevout.hash, wtx4, hashBlock4, true)) {
+if(GetTransaction(mn->vin.prevout.hash, wtx4, hashBlock4, true)) {
 //hashBlock4 now has the block hash
 BlockMap::iterator iter = mapBlockIndex.find(hashBlock4);
 if (iter != mapBlockIndex.end()) {
@@ -568,13 +569,13 @@ level=3;
 }
 }// inner if
 
-}//for loop
+//}//for loop
 }//gettransaction if
        // obj.push_back(Pair("Collat amnts", wtx3.ToString()));
 }//fboost_foreach
-if(level < 1) {
-continue;
-}
+if(level >= 1) {
+
+
 	obj.push_back(Pair("level",level));
 
 
@@ -594,6 +595,7 @@ continue;
             ret.push_back(obj);
         }
     }
+}
 
     return ret;
 }
