@@ -13,6 +13,9 @@ Specs
   Pre-mine %: Less than 1%
 
 
+git clone https://github.com/CatoCoin/CatoCoin
+cd CatoCoin
+
 Linux Compiling Instruction
   ./autogen.sh
   ./configure --disable-tests --disable-bench
